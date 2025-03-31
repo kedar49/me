@@ -22,7 +22,7 @@ export function PixelArtGame() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | null>(null);
   const starsRef = useRef<Star[]>([]);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
 
@@ -56,16 +56,15 @@ export function PixelArtGame() {
       star.brightness = 0.5 + Math.sin(currentTime * star.speed) * 0.5;
 
       if (isHovered) {
-        // Calculate distance from mouse in pixel space
-        const dx = (star.x * PIXEL_SIZE) - mousePos.x;
-        const dy = (star.y * PIXEL_SIZE) - mousePos.y;
-        const distance = Math.sqrt(dx * dx + dy * dy) / PIXEL_SIZE;
+        // Calculate distance from mouse
+        const dx = star.x - mousePos.x / PIXEL_SIZE;
+        const dy = star.y - mousePos.y / PIXEL_SIZE;
+        const distance = Math.sqrt(dx * dx + dy * dy);
         
         if (distance < INTERACTION_RADIUS) {
           // Add subtle movement away from mouse
-          const force = (INTERACTION_RADIUS - distance) / INTERACTION_RADIUS;
-          star.x += (dx / (distance * PIXEL_SIZE)) * MOVEMENT_SPEED * force;
-          star.y += (dy / (distance * PIXEL_SIZE)) * MOVEMENT_SPEED * force;
+          star.x += (dx / distance) * MOVEMENT_SPEED;
+          star.y += (dy / distance) * MOVEMENT_SPEED;
         } else {
           // Return to base position when not influenced by mouse
           star.x += (star.baseX - star.x) * 0.05;
@@ -139,7 +138,7 @@ export function PixelArtGame() {
         onMouseMove={handleMouseMove}
       />
       <div className="absolute -bottom-8 left-0 text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        Hover to animate
+        Lalalalalalalalalala
       </div>
     </div>
   );
