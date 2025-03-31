@@ -2,6 +2,7 @@
 
 import ImprovedLink from './improvedLink';
 import { RevealMail } from './revealMail';
+import { PixelArtGame } from './PixelArtGame';
 
 export default function Footer() {
   const footerItems = [
@@ -19,20 +20,7 @@ export default function Footer() {
     },
   ];
 
-  const feedItems = [
-    {
-      label: 'rss',
-      href: '/rss.xml',
-    },
-    {
-      label: 'atom',
-      href: '/atom.xml',
-    },
-    {
-      label: 'json',
-      href: '/feed.json',
-    },
-  ];
+
 
   return (
     <footer className="mb-16 font-departure-mono">
@@ -56,14 +44,10 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-3">Subscribe</h3>
-          <ul className="flex flex-row space-x-4 mb-6">
-            {feedItems.map(({ label, href }) => (
-              <li key={label} className="group">
-                <ImprovedLink href={href}>{label}</ImprovedLink>
-              </li>
-            ))}
-          </ul>
+          <h3 className="text-sm font-semibold mb-3">Pixel Art</h3>
+          <div className="mb-6">
+            <PixelArtGame />
+          </div>
         </div>
       </div>
       <div className="flex flex-row border-t border-border pt-4">

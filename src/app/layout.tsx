@@ -6,6 +6,8 @@ import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+
 import { GoogleAnalytics } from '@/components/googleAnalytics';
 import ReadingProgressBar from '@/components/readingProgressBar';
 import ScrollToTopButton from '@/components/scrollToTopButton';
@@ -92,7 +94,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ReadingProgressBar />
           <div className="max-w-3xl mx-auto px-4 py-8 container">
             <Navbar />
-            <main className="mt-6">{children}</main>
+            <main className="mt-6">
+              <ErrorBoundary>
+                {children}
+              </ErrorBoundary>
+            </main>
             <Footer />
           </div>
           <ScrollToTopButton />

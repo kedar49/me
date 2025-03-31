@@ -24,6 +24,10 @@ const navItems = [
     path: '/projects',
   },
   {
+    name: 'edu',
+    path: '/edu',
+  },
+  {
     name: 'misc.',
     path: '/misc',
   },

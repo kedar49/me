@@ -1,0 +1,54 @@
+---
+---
+
+import { ResumeDownload } from '@/components/ResumeDownload';
+import { SkillsSection } from '@/components/SkillsSection';
+
+# Education & Experience
+
+<div className="space-y-8 animate-fade-in">
+  <div className="p-4 border border-muted rounded-lg transition-all duration-300 hover:border-primary hover:shadow-md">
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+      <h3 className="text-xl font-semibold">Vishwakarma Institute of Technology, Pune</h3>
+      <span className="text-sm text-muted-foreground">2022 - 2026</span>
+    </div>
+    <p className="text-muted-foreground mt-1">Bachelor of Technology in Computer Engineering</p>
+    <div className="mt-3">
+      <p>Relevant coursework:</p>
+      <ul className="list-disc list-inside mt-2 space-y-1">
+        <li>Data Structures & Algorithms</li>
+        <li>Machine Learning & AI</li>
+        <li>Full-Stack Web Development</li>
+        <li>Operating System & Databse Management</li>
+        <li> Computer Networks & Cyber Security</li>
+        <li>Cloud Computing & Distributed Systems</li>
+      </ul>
+    </div>
+  </div>
+
+ 
+
+  <div className="p-4 border border-muted rounded-lg transition-all duration-300 hover:border-primary hover:shadow-md">
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+      <h3 className="text-xl font-semibold">Freelance</h3>
+      <span className="text-sm text-muted-foreground">2023 - Present</span>
+    </div>
+    <p className="text-muted-foreground mt-1">Full-Stack Developer</p>
+    <div className="mt-3">
+      <ul className="list-disc list-inside mt-2 space-y-1">
+        <li>Built responsive web applications using Next.js, React and TailwindCSS</li>
+        <li>Implemented state management solutions using Redux and Context API</li>
+        <li>Worked with clients to create intuitive user experiences and deliver projects on time</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+## Skills
+
+{/* Skills section moved to a client component */}
+<SkillsSection />
+
+## Resume
+
+<ResumeDownload />
