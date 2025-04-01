@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { logError } from '@/lib/errorHandling';
 
 export function ResumeDownload() {
   const [isHovering, setIsHovering] = useState(false);
@@ -24,8 +25,9 @@ export function ResumeDownload() {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
-    } catch (err) {
+    } catch (error) {
       setError('Failed to download resume. Please try again.');
+      logError(error instanceof Error ? error : new Error(String(error)));
     } finally {
       setIsDownloading(false);
     }

@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
 import { GeistMono } from 'geist/font/mono';
-import { SkillIcons } from './icons/SkillIcons';
 import { skillCategories as importedSkillCategories } from '@/constants';
+import { SkillIcons } from './icons/SkillIcons';
 
 // Define the SkillCategory type
 type SkillCategory = {

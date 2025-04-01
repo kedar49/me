@@ -1,8 +1,8 @@
 'use client';
 
+import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 
-import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import { Button } from '@/components/ui/button';
 
 export function NotFoundContent() {

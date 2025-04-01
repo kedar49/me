@@ -1,8 +1,8 @@
 'use client';
 
+import { PixelArtGame } from './PixelArtGame';
 import { RevealMail } from './revealMail';
 import ImprovedLink from './improvedLink';
-import { PixelArtGame } from './PixelArtGame';
 
 export default function Footer() {
   const footerItems = [
