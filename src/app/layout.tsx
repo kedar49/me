@@ -7,15 +7,13 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-
 import { GoogleAnalytics } from '@/components/googleAnalytics';
 import ReadingProgressBar from '@/components/readingProgressBar';
 import ScrollToTopButton from '@/components/scrollToTopButton';
 import { ThemeProvider } from '@/components/themeProvider';
+import Footer from '@/components/footer';
+import { Navbar } from '@/components/nav';
 import { cx } from '@/lib/utils';
-
-import Footer from '../components/footer';
-import { Navbar } from '../components/nav';
 
 import { baseUrl } from './sitemap';
 

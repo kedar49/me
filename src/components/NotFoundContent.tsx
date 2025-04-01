@@ -1,15 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
+import { Button } from '@/components/ui/button';
 
 export function NotFoundContent() {
   return (
     <section className="flex flex-col items-start gap-4 animate-fade-in">
       <h1 className="mb-2 text-3xl font-semibold tracking-tighter">404 - Page Not Found</h1>
       <p className="mb-4 text-muted-foreground">
-        The page you are looking for doesn't exist or has been moved.
+        The page you are looking for doesn&apos;t exist or has been moved.
       </p>
       
       <div className="flex flex-col sm:flex-row gap-4 mt-2">

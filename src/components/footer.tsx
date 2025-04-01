@@ -1,7 +1,7 @@
 'use client';
 
-import ImprovedLink from './improvedLink';
 import { RevealMail } from './revealMail';
+import ImprovedLink from './improvedLink';
 import { PixelArtGame } from './PixelArtGame';
 
 export default function Footer() {
@@ -19,8 +19,6 @@ export default function Footer() {
       href: 'https://github.com/kedar49/me',
     },
   ];
-
-
 
   return (
     <footer className="mb-16 font-departure-mono">

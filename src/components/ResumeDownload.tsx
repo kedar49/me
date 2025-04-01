@@ -5,14 +5,30 @@ import { useState } from 'react';
 export function ResumeDownload() {
   const [isHovering, setIsHovering] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     setIsDownloading(true);
-    // Simulate download delay
-    setTimeout(() => {
+    setError(null);
+    
+    try {
+      const response = await fetch('/resume.pdf');
+      if (!response.ok) throw new Error('Failed to download resume');
+      
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      setError('Failed to download resume. Please try again.');
+    } finally {
       setIsDownloading(false);
-    }, 2000);
-    // In a real implementation, you would trigger the actual download here
+    }
   };
 
   return (
@@ -23,6 +39,8 @@ export function ResumeDownload() {
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         disabled={isDownloading}
+        aria-label="Download Resume"
+        aria-busy={isDownloading}
         className={`relative inline-block px-6 py-3 bg-primary/10 text-primary rounded-md transition-all duration-300 overflow-hidden ${isDownloading ? 'cursor-wait' : 'hover:bg-primary/20'}`}
       >
         <span className={`transition-transform duration-300 ${isHovering && !isDownloading ? 'transform -translate-y-10 opacity-0' : 'transform translate-y-0 opacity-100'}`}>
@@ -41,6 +59,9 @@ export function ResumeDownload() {
           </span>
         )}
       </button>
+      {error && (
+        <p className="mt-4 text-red-500" role="alert">{error}</p>
+      )}
     </div>
   );
 }

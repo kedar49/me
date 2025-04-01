@@ -1,11 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+
 import { GeistMono } from 'geist/font/mono';
 import { SkillIcons } from './icons/SkillIcons';
-
-// Import skillCategories from constants
 import { skillCategories as importedSkillCategories } from '@/constants';
 
 // Define the SkillCategory type

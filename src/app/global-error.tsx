@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { logError } from '@/lib/errorHandling';
 
@@ -22,7 +23,7 @@ export default function GlobalError({
         <div className="max-w-md w-full space-y-4 text-center">
           <h1 className="text-3xl font-bold tracking-tighter">Something went wrong!</h1>
           <p className="text-muted-foreground">
-            We've encountered an unexpected error. Please try again later.
+            We&apos;ve encountered an unexpected error. Please try again later.
           </p>
           <div className="pt-4">
             <Button
