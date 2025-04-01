@@ -76,7 +76,7 @@ export function formatErrorForClient(error: Error | AppError | unknown): {
  * @param fn The async function to wrap
  * @returns A function that won't throw but returns an error object instead
  */
-export function createSafeAsyncFunction<T, Args extends any[]>(
+export function createSafeAsyncFunction<T, Args extends unknown[]>(
   fn: (...args: Args) => Promise<T>
 ): (...args: Args) => Promise<{ data: T | null; error: Error | null }> {
   return async (...args: Args) => {
