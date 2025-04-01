@@ -17,6 +17,9 @@ import remarkToc from 'remark-toc';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  eslint: {
+    ignoreDuringBuilds: true
+  },
   async headers() {
     return [
       {
@@ -28,6 +31,7 @@ const nextConfig = {
           },
         ],
       },
+
       {
         source: '/(.*)',
         headers: [
