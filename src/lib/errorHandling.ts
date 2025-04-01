@@ -43,7 +43,7 @@ export function logError(error: Error, context?: Record<string, unknown>): void 
  * Format an error for client-side display
  * @param error The error to format
  */
-export function formatErrorForClient(error: unknown): {
+export function formatErrorForClient(error: Error | AppError | unknown): {
   message: string;
   code: string;
   statusCode: number;

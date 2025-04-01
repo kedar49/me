@@ -1,20 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { GeistMono } from 'geist/font/mono';
+
 import { skillCategories as importedSkillCategories } from '@/constants';
 import { SkillIcons } from './icons/SkillIcons';
-
-// Define the SkillCategory type
-type SkillCategory = {
-  title: string;
-  color: string;
-  skills: {
-    name: string;
-    level: number;
-    iconComponent: string;
-  }[];
-};
 
 export function SkillsSection() {
   // State to track which sections are expanded

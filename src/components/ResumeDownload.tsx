@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+
 import { logError } from '@/lib/errorHandling';
 
 export function ResumeDownload() {
