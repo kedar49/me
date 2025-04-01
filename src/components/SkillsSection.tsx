@@ -1,6 +1,7 @@
 'use client';
 
 import { GeistMono } from 'geist/font/mono';
+
 import { useEffect, useState } from 'react';
 
 import { skillCategories as importedSkillCategories } from '@/constants';
