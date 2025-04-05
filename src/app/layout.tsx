@@ -16,6 +16,7 @@ import { ThemeProvider } from '@/components/themeProvider';
 import { cx } from '@/lib/utils';
 
 import { baseUrl } from './sitemap';
+import SchemaMarkup from './schema';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -23,35 +24,35 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   title: {
-    default: 'kedar sathe',
-    template: '%s | kedar sathe',
+    default: 'Kedar Sathe | Machine Learning Engineer | VIT Pune',
+    template: '%s | Kedar Sathe | ML Engineer',
   },
-  description: "kedar's site.",
-  authors: [{ name: 'kedar sathe' }],
-  keywords: ['wtfkedar', 'kedar', 'sathe', 'kedar sathe'],
-  creator: 'kedar sathe',
-  publisher: 'kedar sathe',
+  description: "Kedar Sathe's personal website - Machine Learning Engineer and AI specialist from VIT Pune with expertise in TensorFlow, PyTorch, and DevOps.",
+  authors: [{ name: 'Kedar Sathe' }],
+  keywords: ['wtfkedar', 'kedar', 'sathe', 'kedar sathe', 'Machine Learning Engineer', 'VIT Pune', 'Vishwakarma Institute of Technology', 'AI Engineer', 'TensorFlow', 'PyTorch', 'DevOps', 'NLP', 'Computer Vision', 'Data Analysis'],
+  creator: 'Kedar Sathe',
+  publisher: 'Kedar Sathe',
   openGraph: {
-    title: 'kedar sathe',
-    description: "kedar's site.",
+    title: 'Kedar Sathe | Machine Learning Engineer | VIT Pune',
+    description: "Kedar Sathe's personal website - Machine Learning Engineer and AI specialist from VIT Pune with expertise in TensorFlow, PyTorch, and DevOps.",
     url: baseUrl,
-    siteName: 'kedar sathe',
+    siteName: 'Kedar Sathe | ML Engineer',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
-        url: `${baseUrl}/og?title=${encodeURIComponent('kedar sathe')}`,
+        url: `${baseUrl}/og?title=${encodeURIComponent('Kedar Sathe | ML Engineer')}`,
         width: 512,
         height: 512,
       },
     ],
   },
   twitter: {
-    title: 'kedar sathe',
-    description: "kedar's site.",
+    title: 'Kedar Sathe | Machine Learning Engineer',
+    description: "Machine Learning Engineer and AI specialist from VIT Pune with expertise in TensorFlow, PyTorch, and DevOps.",
     creator: '@wtfkedar',
     card: 'summary_large_image',
-    images: [`${baseUrl}/og?title=${encodeURIComponent('kedar sathe')}`],
+    images: [`${baseUrl}/og?title=${encodeURIComponent('Kedar Sathe | ML Engineer')}`],
     site: '@wtfkedar',
   },
   robots: {
@@ -98,6 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </ErrorBoundary>
             </main>
             <Footer />
+            <SchemaMarkup />
           </div>
           <ScrollToTopButton />
           <Analytics />

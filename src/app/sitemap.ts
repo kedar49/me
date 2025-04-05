@@ -1,6 +1,6 @@
 import { getBlogPosts } from '@/app/blog/utils';
 
-export const baseUrl = 'https://thepushkarp.com';
+export const baseUrl = 'https://wtfkedar.vercel.app';
 
 export default async function sitemap() {
   // Static routes
