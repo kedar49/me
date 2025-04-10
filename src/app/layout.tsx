@@ -10,6 +10,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import Footer from '@/components/footer';
 import { GoogleAnalytics } from '@/components/googleAnalytics';
 import { Navbar } from '@/components/nav';
+import { PageTransition } from '@/components/pageTransition';
 import ReadingProgressBar from '@/components/readingProgressBar';
 import ScrollToTopButton from '@/components/scrollToTopButton';
 import { ThemeProvider } from '@/components/themeProvider';
@@ -95,7 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Navbar />
             <main className="mt-6">
               <ErrorBoundary>
-                {children}
+                <PageTransition>{children}</PageTransition>
               </ErrorBoundary>
             </main>
             <Footer />
