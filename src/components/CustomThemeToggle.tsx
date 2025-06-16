@@ -8,10 +8,9 @@ const CustomThemeToggle = () => {
 
   // Initialize theme on mount
   useEffect(() => {
-    // Check localStorage first, then system preference, default to light
+    // Check localStorage first, default to light for first-time visitors
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    const initialTheme = savedTheme || systemPreference;
+    const initialTheme = savedTheme || 'light'; // Always default to light theme
 
     setTheme(initialTheme);
     applyTheme(initialTheme);
