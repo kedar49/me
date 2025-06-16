@@ -37,72 +37,104 @@
 }
 
 @layer base {
+  /* Default theme (graceful degradation - defaults to light) */
   :root {
-    --background: 210 30% 96%;
-    --foreground: 220 35% 35%;
-    --card: 210 25% 97%;
-    --card-foreground: 220 20% 20%;
-    --popover: 210 25% 97%;
-    --popover-foreground: 220 20% 20%;
-    --primary: 210 90% 60%;
-    --primary-foreground: 210 25% 98%;
-    --secondary: 210 30% 94%;
-    --secondary-foreground: 220 20% 25%;
-    --muted: 210 20% 90%;
-    --muted-foreground: 220 10% 40%;
-    --accent: 210 50% 80%;
-    --accent-foreground: 220 15% 30%;
-    --destructive: 0 70% 70%;
-    --destructive-foreground: 210 25% 98%;
-    --border: 210 25% 90%;
-    --input: 210 25% 90%;
-    --ring: 210 60% 60%;
+    --clr-bg: #FFFCE8;
+    --clr-text: #2D2D2D;
+    --clr-head: #483C32;
+    --clr-accent: #927E5A;
+    --clr-border: #D3C6A6;
+    --clr-link: #268BD2;
+    --clr-link-hover: #4A3F24;
+    --font-serif: 'Libre Baskerville', serif;
+    --font-display: 'Playfair Display', serif;
+    --font-mono: 'Fira Code', monospace;
+    
+    /* Tailwind compatibility mappings */
+    --background: 44 59% 94%; /* #FFFCE8 in HSL */
+    --foreground: 0 0% 18%; /* #2D2D2D in HSL */
+    --card: 44 59% 94%;
+    --card-foreground: 0 0% 18%;
+    --popover: 44 59% 94%;
+    --popover-foreground: 0 0% 18%;
+    --primary: 202 83% 47%; /* #268BD2 in HSL */
+    --primary-foreground: 44 59% 94%;
+    --secondary: 39 22% 55%; /* #927E5A in HSL */
+    --secondary-foreground: 0 0% 18%;
+    --muted: 48 39% 81%; /* #D3C6A6 in HSL */
+    --muted-foreground: 30 24% 25%; /* #483C32 in HSL */
+    --accent: 39 22% 55%;
+    --accent-foreground: 0 0% 18%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 44 59% 94%;
+    --border: 48 39% 81%;
+    --input: 48 39% 81%;
+    --ring: 202 83% 47%;
     --radius: 0.5rem;
-    --chart-1: 210 60% 60%;
-    --chart-2: 210 70% 40%;
-    --chart-3: 210 50% 40%;
-    --chart-4: 210 60% 45%;
-    --chart-5: 210 70% 50%;
-    --font-geist-sans: 'GeistSans', sans-serif;
-    --font-geist-mono: 'GeistMono', monospace;
-    --font-departure-mono: 'DepartureMono', monospace;
-    --selection-bg: 210 65% 85%;
-    --progress-bar: 210 100% 50%;
-    --visited-link-color: 280 70% 45%;
   }
 
-  .dark {
-    --background: 220 20% 10%;
-    --foreground: 60 15% 90%;
-    --card: 220 13% 23%;
-    --card-foreground: 60 9% 98%;
-    --popover: 220 13% 23%;
-    --popover-foreground: 60 9% 98%;
-    --primary: 32 85% 50%;
-    --primary-foreground: 220 13% 18%;
-    --secondary: 220 20% 30%;
-    --secondary-foreground: 60 9% 98%;
-    --muted: 220 15% 25%;
-    --muted-foreground: 60 5% 80%;
-    --accent: 32 85% 50%;
-    --accent-foreground: 220 15% 20%;
-    --destructive: 0 68% 50%;
-    --destructive-foreground: 60 9% 98%;
-    --border: 220 13% 28%;
-    --input: 220 13% 23%;
-    --ring: 32 95% 44%;
-    --chart-1: 30 95% 40%;
-    --chart-2: 30 80% 50%;
-    --chart-3: 30 70% 60%;
-    --chart-4: 30 60% 65%;
-    --chart-5: 30 50% 45%;
-    --selection-bg: 32 90% 30%;
-    --progress-bar: 32 95% 50%;
-    --visited-link-color: 280 40% 50%;
+  /* Light theme explicit */
+  :root.light-theme {
+    --clr-bg: #FFFCE8;
+    --clr-text: #2D2D2D;
+    --clr-head: #483C32;
+    --clr-accent: #927E5A;
+    --clr-border: #D3C6A6;
+    --clr-link: #268BD2;
+    --clr-link-hover: #4A3F24;
+  }
+
+  /* Dark theme */
+  :root.dark-theme {
+    --clr-bg: #1A1A1A;
+    --clr-text: #E8E8E8;
+    --clr-head: #F0E6DC;
+    --clr-accent: #C9A876;
+    --clr-border: #4A4A4A;
+    --clr-link: #5DADE2;
+    --clr-link-hover: #F4D03F;
+    
+    /* Tailwind compatibility mappings for dark */
+    --background: 0 0% 10%; /* #1A1A1A in HSL */
+    --foreground: 0 0% 91%; /* #E8E8E8 in HSL */
+    --card: 0 0% 13%;
+    --card-foreground: 0 0% 91%;
+    --popover: 0 0% 13%;
+    --popover-foreground: 0 0% 91%;
+    --primary: 206 77% 59%; /* #5DADE2 in HSL */
+    --primary-foreground: 0 0% 10%;
+    --secondary: 43 44% 62%; /* #C9A876 in HSL */
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 29%; /* #4A4A4A in HSL */
+    --muted-foreground: 30 20% 94%; /* #F0E6DC in HSL */
+    --accent: 43 44% 62%;
+    --accent-foreground: 0 0% 10%;
+    --border: 0 0% 29%;
+    --input: 0 0% 29%;
+    --ring: 206 77% 59%;
   }
 
   ::selection {
-    background-color: hsl(var(--selection-bg));
+    background-color: var(--clr-accent);
+    color: var(--clr-bg);
+  }
+
+  /* Utility classes for custom theme variables */
+  .text-theme-primary { color: var(--clr-text); }
+  .text-theme-head { color: var(--clr-head); }
+  .text-theme-accent { color: var(--clr-accent); }
+  .text-theme-link { color: var(--clr-link); }
+  .bg-theme-primary { background-color: var(--clr-bg); }
+  .border-theme { border-color: var(--clr-border); }
+  
+  /* Override link styles to use custom variables */
+  a {
+    color: var(--clr-link);
+    transition: color 0.2s ease;
+  }
+  
+  a:hover {
+    color: var(--clr-link-hover);
   }
 
   html {
@@ -148,9 +180,7 @@
     font-family: var(--font-departure-mono);
   }
 
-  a {
-    @apply decoration-muted-foreground decoration-[0.05em];
-  }
+  /* Removed old link styles - handled by custom variables above */
 
   h1,
   h2,
@@ -159,6 +189,7 @@
   h5,
   h6 {
     @apply font-bold tracking-wide font-geist-mono;
+    color: var(--clr-head);
   }
 
   h1 {
@@ -185,16 +216,14 @@
     @apply text-sm mb-2 mt-3;
   }
 
-  a:hover {
-    @apply text-primary;
-  }
-
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   hr {

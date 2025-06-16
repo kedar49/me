@@ -10,14 +10,15 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import Footer from '@/components/footer';
 import { GoogleAnalytics } from '@/components/googleAnalytics';
 import { Navbar } from '@/components/nav';
+import Oneko from '@/components/Oneko';
 import { PageTransition } from '@/components/pageTransition';
 import ReadingProgressBar from '@/components/readingProgressBar';
 import ScrollToTopButton from '@/components/scrollToTopButton';
-import { ThemeProvider } from '@/components/themeProvider';
-import { cx } from '@/lib/utils';
 
-import { baseUrl } from './sitemap';
+
+
 import SchemaMarkup from './schema';
+import { baseUrl } from './sitemap';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -82,31 +83,24 @@ const fontClasses = `${GeistSans.variable} ${GeistMono.variable} ${DepartureMono
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={cx(fontClasses, 'dark')} suppressHydrationWarning>
+    <html lang="en" className={fontClasses} suppressHydrationWarning>
       <body className="antialiased font-sans" suppressHydrationWarning>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          enableColorScheme={false}
-          disableTransitionOnChange
-        >
-          <ReadingProgressBar />
-          <div className="max-w-3xl mx-auto px-4 py-8 container">
-            <Navbar />
-            <main className="mt-6">
-              <ErrorBoundary>
-                <PageTransition>{children}</PageTransition>
-              </ErrorBoundary>
-            </main>
-            <Footer />
-            <SchemaMarkup />
-          </div>
-          <ScrollToTopButton />
-          <Analytics />
-          <SpeedInsights />
-          <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
-        </ThemeProvider>
+        <ReadingProgressBar />
+        <div className="max-w-3xl mx-auto px-4 py-8 container">
+          <Navbar />
+          <main className="mt-6">
+            <ErrorBoundary>
+              <PageTransition>{children}</PageTransition>
+            </ErrorBoundary>
+          </main>
+          <Footer />
+          <SchemaMarkup />
+        </div>
+        <ScrollToTopButton />
+        <Oneko />
+        <Analytics />
+        <SpeedInsights />
+        <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
       </body>
     </html>
   );

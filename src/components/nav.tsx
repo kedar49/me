@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-import ThemeToggle from '@/components/themeToggle';
+import CustomThemeToggle from '@/components/CustomThemeToggle';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 import { GlowingDot } from './glowingDot';
@@ -146,7 +146,7 @@ export function Navbar() {
           })}
         </nav>
         <div className="flex-shrink-0 ml-4">
-          <ThemeToggle />
+          <CustomThemeToggle />
         </div>
       </div>
     </aside>
