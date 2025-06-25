@@ -86,20 +86,47 @@ export default function AnimatedLogo() {
           }
         }
         
-        @media (max-width: 768px) {
+        /* Mobile positioning to avoid navigation overlap */
+        @media (max-width: 1024px) {
           .logo-container {
-            top: 1rem;
-            left: 1rem;
+            top: 1rem !important;
+            right: 4rem !important;
+            left: auto !important;
           }
           .logo-size {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 2.5rem !important;
+            height: 2.5rem !important;
+          }
+          .entrance-animation {
+            animation: slideInBounceMobile 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+          }
+        }
+        
+        @keyframes slideInBounceMobile {
+          0% {
+            transform: translateX(100px) translateY(-20px) rotate(45deg) scale(0.5);
+            opacity: 0;
+          }
+          60% {
+            transform: translateX(-10px) translateY(5px) rotate(-5deg) scale(1.1);
+            opacity: 0.8;
+          }
+          100% {
+            transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+            opacity: 1;
+          }
+        }
+        
+        @media (min-width: 1025px) {
+          .logo-container {
+            top: 1rem !important;
+            left: 1rem !important;
           }
         }
       `}</style>
       
-      <div className={`fixed top-4 left-4 z-50 logo-container transition-all duration-300 ${
-        isVisible ? 'entrance-animation' : 'opacity-0 -translate-x-24'
+      <div className={`fixed top-4 left-4 lg:top-4 lg:left-4 top-4 right-16 lg:right-auto z-50 logo-container transition-all duration-300 ${
+        isVisible ? 'entrance-animation' : 'opacity-0 lg:-translate-x-24 translate-x-24 lg:translate-x-0'
       }`}>
         <Link
           href="/"
@@ -130,7 +157,7 @@ export default function AnimatedLogo() {
             
             {/* Main logo container */}
             <div
-              className={`relative w-12 h-12 md:w-12 md:h-12 sm:w-10 sm:h-10 logo-size rounded-full overflow-hidden bg-white transition-all duration-300 logo-pulse ${
+              className={`relative w-12 h-12 lg:w-12 lg:h-12 w-10 h-10 logo-size rounded-full overflow-hidden bg-white transition-all duration-300 logo-pulse ${
                 isHovered ? 'scale-105 rotate-12 shadow-xl' : 'scale-100 rotate-0 shadow-lg'
               }`}
             >
@@ -172,7 +199,7 @@ export default function AnimatedLogo() {
             
             {/* Hover tooltip - hidden on mobile */}
             <div
-              className={`absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md whitespace-nowrap transition-all duration-300 hidden md:block ${
+              className={`absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md whitespace-nowrap transition-all duration-300 hidden lg:block ${
                 isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
               }`}
             >
