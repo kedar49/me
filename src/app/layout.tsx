@@ -6,6 +6,7 @@ import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
+import AnimatedLogo from '@/components/AnimatedLogo';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import Footer from '@/components/footer';
 import { GoogleAnalytics } from '@/components/googleAnalytics';
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={fontClasses} suppressHydrationWarning>
       <body className="antialiased font-sans" suppressHydrationWarning>
         <ReadingProgressBar />
+        <AnimatedLogo />
         <div className="max-w-3xl mx-auto px-4 py-8 container">
           <Navbar />
           <main className="mt-6">
