@@ -1,7 +1,7 @@
-import { generateFeed } from '@/lib/feed';
+import { generateRSSFeed } from '@/lib/feed';
 
 export async function GET() {
-  const feed = await generateFeed();
+  const feed = await generateRSSFeed();
   return new Response(feed.atom1(), {
     headers: {
       'Content-Type': 'application/atom+xml; charset=utf-8',
