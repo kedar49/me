@@ -1,82 +1,85 @@
 import { Feed } from 'feed';
 
 import { getBlogPosts } from '@/app/blog/utils';
-import { baseUrl } from '@/app/sitemap';
+
+import { baseUrl } from '../app/sitemap';
 
 function escapeXml(unsafe: string): string {
-  return unsafe
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
+  return unsafe.replace(/[<>&'"]/g, c => {
+    switch (c) {
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '&': return '&amp;';
+      case "'": return '&apos;';
+      case '"': return '&quot;';
+      default: return c;
+    }
+  });
 }
 
-export async function generateFeed() {
-  const feed = new Feed({
-    title: escapeXml("pushkar patel's blog"),
-    description: escapeXml('some thoughts, some ideas, some rants, some code'),
-    id: baseUrl,
-    link: baseUrl,
-    language: 'en',
-    favicon: `${baseUrl}/favicon.ico`,
-    image: `${baseUrl}/og?title=${encodeURIComponent('pushkar patel')}`,
-    copyright: `All rights reserved ${new Date().getFullYear()}, Pushkar Patel`,
-    updated: new Date(),
+export async function generateRSSFeed() {
+  const allPosts = await getBlogPosts();
+  const site_url = baseUrl;
+
+  const feedOptions = {
+    title: escapeXml("Kedar Sathe's blog"),
+    description: escapeXml('Machine Learning Engineer and AI specialist from VIT Pune'),
+    id: site_url,
+    link: site_url,
+    image: `${baseUrl}/og?title=${encodeURIComponent('Kedar Sathe')}`,
+    favicon: `${site_url}/favicon.ico`,
+    copyright: `All rights reserved ${new Date().getFullYear()}, Kedar Sathe`,
     generator: 'Feed for Node.js',
     feedLinks: {
-      rss2: `${baseUrl}/rss.xml`,
-      atom: `${baseUrl}/atom.xml`,
-      json: `${baseUrl}/feed.json`,
+      rss2: `${site_url}/rss.xml`,
+      json: `${site_url}/rss.json`,
+      atom: `${site_url}/atom.xml`,
     },
     author: {
-      name: 'Pushkar Patel',
-      link: baseUrl,
+      name: 'Kedar Sathe',
+      email: 'wtfkedar@gmail.com',
+      link: site_url,
     },
-  });
+  };
 
-  // Add homepage
-  feed.addItem({
-    title: escapeXml('pushkar patel'),
-    id: baseUrl,
-    link: baseUrl,
-    description: escapeXml("pushkar's site"),
-    date: new Date(),
-  });
+  const feed = new Feed(feedOptions);
 
-  // Add blog index
-  feed.addItem({
-    title: escapeXml('blog | pushkar patel'),
-    id: `${baseUrl}/blog`,
-    link: `${baseUrl}/blog`,
-    description: escapeXml('some thoughts, some ideas, some rants, some code'),
-    date: new Date(),
-  });
-
-  // Add blog posts
-  const posts = await getBlogPosts();
-  for (const post of posts) {
+  // Adding the blog posts to the rss feed
+  allPosts.map(post => {
+    const url = `${site_url}/blog/${post.slug}`;
     feed.addItem({
       title: escapeXml(post.metadata.title),
-      id: `${baseUrl}/blog/${post.slug}`,
-      link: `${baseUrl}/blog/${post.slug}`,
+      id: url,
+      link: url,
       description: escapeXml(post.metadata.subtitle),
-      content: post.content,
+      content: escapeXml(post.content || ''),
       author: [
         {
-          name: 'Pushkar Patel',
-          link: baseUrl,
+          name: 'Kedar Sathe',
+          email: 'wtfkedar@gmail.com',
+          link: site_url,
         },
       ],
       date: new Date(post.metadata.publishedAt),
-      ...(post.metadata.lastModifiedAt && {
-        modified: new Date(post.metadata.lastModifiedAt),
-      }),
-      ...(post.metadata.tags && {
-        category: post.metadata.tags.map(tag => ({ name: escapeXml(tag) })),
-      }),
     });
-  }
+  });
+
+  // Adding blog page to the feed
+  feed.addItem({
+    title: escapeXml('blog | Kedar Sathe'),
+    id: `${site_url}/blog`,
+    link: `${site_url}/blog`,
+    description: escapeXml('Machine Learning Engineer and AI specialist blog'),
+    content: escapeXml('Blog posts about Machine Learning, AI, and technology'),
+    author: [
+      {
+        name: 'Kedar Sathe',
+        email: 'wtfkedar@gmail.com',
+        link: site_url,
+      },
+    ],
+    date: new Date(),
+  });
 
   return feed;
 }

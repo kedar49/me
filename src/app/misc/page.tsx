@@ -3,30 +3,30 @@ import { baseUrl } from '@/app/sitemap';
 import MiscMdx from './misc.mdx';
 
 export const metadata = {
-  title: 'miscellaneous',
-  description: 'a potpourri of things i find interesting',
+  title: 'misc.',
+  description: 'random stuff i find interesting',
+  alternates: {
+    canonical: `${baseUrl}/misc`,
+  },
   openGraph: {
-    title: 'miscellaneous',
-    siteName: 'pushkar patel',
-    description: 'a potpourri of things i find interesting',
-    alternates: {
-      canonical: `${baseUrl}/misc`,
-    },
+    title: 'misc.',
+    siteName: 'Kedar Sathe',
+    description: 'random stuff i find interesting',
     type: 'article',
     url: `${baseUrl}/misc`,
     images: [
       {
-        url: `${baseUrl}/og?title=${encodeURIComponent('miscellaneous')}&subtitle=${encodeURIComponent('a potpourri of things i find interesting')}`,
+        url: `${baseUrl}/og?title=${encodeURIComponent('misc.')}&subtitle=${encodeURIComponent('random stuff i find interesting')}`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'miscellaneous',
-    description: 'a potpourri of things i find interesting',
-    creator: '@thepushkarp',
+    title: 'misc.',
+    description: 'random stuff i find interesting',
+    creator: '@wtfkedar',
     images: [
-      `${baseUrl}/og?title=${encodeURIComponent('miscellaneous')}&subtitle=${encodeURIComponent('a potpourri of things i find interesting')}`,
+      `${baseUrl}/og?title=${encodeURIComponent('misc.')}&subtitle=${encodeURIComponent('random stuff i find interesting')}`,
     ],
   },
 };

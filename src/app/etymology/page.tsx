@@ -4,29 +4,29 @@ import EtymologyMdx from './etymology.mdx';
 
 export const metadata = {
   title: 'etymology',
-  description: 'word origins i found interesting',
+  description: 'interesting word origins',
+  alternates: {
+    canonical: `${baseUrl}/etymology`,
+  },
   openGraph: {
     title: 'etymology',
-    siteName: 'pushkar patel',
-    description: 'word origins i found interesting',
-    alternates: {
-      canonical: `${baseUrl}/etymology`,
-    },
+    siteName: 'Kedar Sathe',
+    description: 'interesting word origins',
     type: 'article',
     url: `${baseUrl}/etymology`,
     images: [
       {
-        url: `${baseUrl}/og?title=${encodeURIComponent('etymology')}&subtitle=${encodeURIComponent('word origins i found interesting')}`,
+        url: `${baseUrl}/og?title=${encodeURIComponent('etymology')}&subtitle=${encodeURIComponent('interesting word origins')}`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'etymology',
-    description: 'word origins i found interesting',
-    creator: '@thepushkarp',
+    description: 'interesting word origins',
+    creator: '@wtfkedar',
     images: [
-      `${baseUrl}/og?title=${encodeURIComponent('etymology')}&subtitle=${encodeURIComponent('word origins i found interesting')}`,
+      `${baseUrl}/og?title=${encodeURIComponent('etymology')}&subtitle=${encodeURIComponent('interesting word origins')}`,
     ],
   },
 };
