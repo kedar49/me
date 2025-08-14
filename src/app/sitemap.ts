@@ -1,9 +1,7 @@
-import { getBlogPosts } from '@/app/blog/utils';
-
 export const baseUrl = 'https://wtfkedar.vercel.app';
 
 export default async function sitemap() {
-  // Static routes
+  // Static routes (removed individual blog posts since they're now external)
   const staticRoutes = ['', '/blog', '/projects', '/misc', '/etymology', '/ai-log'].map(route => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],
@@ -11,14 +9,5 @@ export default async function sitemap() {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
-  // Blog posts
-  const posts = await getBlogPosts();
-  const blogRoutes = posts.map(post => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.metadata.lastModifiedAt || post.metadata.publishedAt,
-    changeFrequency: 'weekly' as const,
-    priority: 0.6,
-  }));
-
-  return [...staticRoutes, ...blogRoutes];
+  return staticRoutes;
 }
