@@ -1,5 +1,7 @@
 'use client';
 
+import { Twitter, Github, Code, Mail } from 'lucide-react';
+
 import ImprovedLink from './improvedLink';
 import { PixelArtGame } from './PixelArtGame';
 import { RevealMail } from './revealMail';
@@ -9,14 +11,17 @@ export default function Footer() {
     {
       label: 'twitter',
       href: 'https://twitter.com/wtfkedar',
+      icon: Twitter,
     },
     {
       label: 'github',
       href: 'https://github.com/kedar49',
+      icon: Github,
     },
     {
       label: 'source code',
       href: 'https://github.com/kedar49/me',
+      icon: Code,
     },
   ];
 
@@ -27,17 +32,21 @@ export default function Footer() {
         <div>
           <h3 className="text-sm font-semibold mb-3">Connect</h3>
           <ul className="flex flex-col space-y-2">
-            {footerItems.map(({ label, href }) => (
+            {footerItems.map(({ label, href, icon: Icon }) => (
               <li key={label} className="group">
                 <ImprovedLink href={href}>
-                  <span className="inline-block w-6 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                  {label}
+                  <div className="flex items-center space-x-2">
+                    <Icon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
+                    <span>{label}</span>
+                  </div>
                 </ImprovedLink>
               </li>
             ))}
             <li className="group">
-              <span className="inline-block w-6 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-              <RevealMail placeholder="mail" isLink={true} />
+              <div className="flex items-center space-x-2">
+                <Mail className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
+                <RevealMail placeholder="mail" isLink={true} />
+              </div>
             </li>
           </ul>
         </div>

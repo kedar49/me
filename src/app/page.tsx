@@ -1,6 +1,7 @@
 import IndexMdx from '@/app/index.mdx';
 import { baseUrl } from '@/app/sitemap';
 import { TimeDisplay } from '@/components/TimeDisplay';
+import { Button } from '@/components/ui/button';
 
 export const metadata = {
   title: 'Kedar Sathe | Machine Learning Engineer | VIT Pune',
@@ -35,6 +36,14 @@ export default function HomePage() {
     <main className="flex flex-col text-left">
       <h1 className="mb-8 font-semibold tracking-tighter">kedar sathe</h1>
       <TimeDisplay />
+      <div className="mt-4">
+        <Button asChild variant="outline" size="sm" className="group">
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            Resume
+            <span className="ml-2 inline-block transition-transform group-hover:translate-x-0.5">↗</span>
+          </a>
+        </Button>
+      </div>
       <div className="flex flex-row">
         <section>
           <article className="prose">
