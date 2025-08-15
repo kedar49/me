@@ -1,7 +1,5 @@
 import { Feed } from 'feed';
 
-import { getBlogPosts } from '@/app/blog/utils';
-
 import { baseUrl } from '../app/sitemap';
 
 function escapeXml(unsafe: string): string {
@@ -18,12 +16,12 @@ function escapeXml(unsafe: string): string {
 }
 
 export async function generateRSSFeed() {
-  const allPosts = await getBlogPosts();
   const site_url = baseUrl;
+  const externalBlogUrl = 'https://neuronreads.vercel.app/';
 
   const feedOptions = {
-    title: escapeXml("Kedar Sathe's blog"),
-    description: escapeXml('Machine Learning Engineer and AI specialist from VIT Pune'),
+    title: escapeXml("Kedar Sathe's Portfolio"),
+    description: escapeXml('Machine Learning Engineer and AI specialist from VIT Pune. Blog available at neuronreads.vercel.app'),
     id: site_url,
     link: site_url,
     image: `${baseUrl}/og?title=${encodeURIComponent('Kedar Sathe')}`,
@@ -44,33 +42,13 @@ export async function generateRSSFeed() {
 
   const feed = new Feed(feedOptions);
 
-  // Adding the blog posts to the rss feed
-  allPosts.map(post => {
-    const url = `${site_url}/blog/${post.slug}`;
-    feed.addItem({
-      title: escapeXml(post.metadata.title),
-      id: url,
-      link: url,
-      description: escapeXml(post.metadata.subtitle),
-      content: escapeXml(post.content || ''),
-      author: [
-        {
-          name: 'Kedar Sathe',
-          email: 'wtfkedar@gmail.com',
-          link: site_url,
-        },
-      ],
-      date: new Date(post.metadata.publishedAt),
-    });
-  });
-
-  // Adding blog page to the feed
+  // Adding external blog reference to the feed
   feed.addItem({
-    title: escapeXml('blog | Kedar Sathe'),
-    id: `${site_url}/blog`,
-    link: `${site_url}/blog`,
-    description: escapeXml('Machine Learning Engineer and AI specialist blog'),
-    content: escapeXml('Blog posts about Machine Learning, AI, and technology'),
+    title: escapeXml('neuronreads | Kedar Sathe Blog'),
+    id: externalBlogUrl,
+    link: externalBlogUrl,
+    description: escapeXml('Visit my external blog site for latest thoughts on Machine Learning, AI, and technology'),
+    content: escapeXml('My blog has moved to neuronreads.vercel.app where I share insights about Machine Learning, AI, and technology.'),
     author: [
       {
         name: 'Kedar Sathe',
@@ -79,6 +57,43 @@ export async function generateRSSFeed() {
       },
     ],
     date: new Date(),
+  });
+
+  // Adding portfolio pages to the feed
+  const portfolioPages = [
+    {
+      title: 'Projects',
+      path: '/projects',
+      description: 'My latest projects and work'
+    },
+    {
+      title: 'Education',
+      path: '/edu', 
+      description: 'My educational background and achievements'
+    },
+    {
+      title: 'Miscellaneous',
+      path: '/misc',
+      description: 'Random thoughts and miscellaneous content'
+    }
+  ];
+
+  portfolioPages.forEach(page => {
+    feed.addItem({
+      title: escapeXml(`${page.title} | Kedar Sathe`),
+      id: `${site_url}${page.path}`,
+      link: `${site_url}${page.path}`,
+      description: escapeXml(page.description),
+      content: escapeXml(page.description),
+      author: [
+        {
+          name: 'Kedar Sathe',
+          email: 'wtfkedar@gmail.com',
+          link: site_url,
+        },
+      ],
+      date: new Date(),
+    });
   });
 
   return feed;

@@ -1,15 +1,21 @@
 import Image from 'next/image';
-import { MDXRemote } from 'next-mdx-remote/rsc';
 
-import ImprovedLink from './improvedLink';
+interface RoundedImageProps {
+  src: string;
+  alt: string;
+  caption?: string;
+  [key: string]: any;
+}
 
-const RoundedImage = props => {
+const RoundedImage = (props: RoundedImageProps) => {
+  const { src, alt, caption, ...imageProps } = props;
+  
   return (
     <figure className="my-4 flex flex-col items-center">
-      <Image src={props.src} alt={props.alt} className="rounded-lg" {...props} />
-      {props.caption && (
+      <Image src={src} alt={alt} className="rounded-lg" {...imageProps} />
+      {caption && (
         <figcaption className="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
-          <MDXRemote source={props.caption} components={{ a: ImprovedLink }} />
+          {caption}
         </figcaption>
       )}
     </figure>
